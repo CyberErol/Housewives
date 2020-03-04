@@ -1,6 +1,33 @@
-
 #itemList > div{
 	display: grid;
 	grid-template-columns: auto auto auto auto auto;
+}
 
+.header {
+	padding: 30px;
+	text-align: center;
+	background: #ffb3a7;
+	color: white;
+	font-size: 30px;
+	border: 1px solid black;
+}
 
+.container {
+	max-width: 1200px;
+	margin: auto;
+	width: 100%;
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-gap: 100px;
+	margin-top: 50px;
+}
+
+.history {
+	background-color: #ffb3a7;
+	border: 2px solid black;
+}
+
+.chart {
+	background-color: #ffb3a7;
+	border: 2px solid black;
+}

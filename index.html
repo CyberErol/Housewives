@@ -6,14 +6,21 @@
 	<link rel="stylesheet" href="style.css" media="all">
 </head>
 <body>
-	<h1>Töötasu kokku: <span id="tot">0</span>€</h1>
+    <div class="header">
+    <h1>Töötasu kokku: <span id="tot">0</span>€</h1>
+    
 	<form id="form">
 		<select id="select" name=""> </select>
 		<input id="num" type="number" placeholder="tunnid" value="1">
 		<input id="date" type="text" placeholder="kuupäev">
 		<button id="btn">+</button>
-	</form>
-	<div id="itemList"> </div>
+    </form>
+    </div>
+    <div class="container">
+        <div class="history"></div>
+        <div class="chart"></div>
+    </div>
+    <div id="itemList"> </div>
 
 	<script src="script.js"></script>
 </body>

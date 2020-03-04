@@ -4,6 +4,7 @@ const num = document.querySelector("#num")
 const form = document.querySelector("#form")
 const itemList = document.querySelector("#itemList")
 const dateElm = document.querySelector("#date")
+const chartElm = document.querySelector("#chart").getContext("2d")
 
 fetch("./names.json").then(raw => {return raw.json()}).then(data => {
 	for(item in data){
@@ -35,6 +36,7 @@ function Entry(name, hour, date, sum){
 	this.hour = parseInt(hour);
 	this.sum = sum;
 	this.date = date;
+	dt = chart.data.datasets[0].data
 
 	this.rm = function(){
 		calc.ents.splice(calc.ents.indexOf(this), 1)
@@ -43,6 +45,10 @@ function Entry(name, hour, date, sum){
 	}
 
 	this.elm = document.createElement("div")
+
+	var dateElm = document.createElement("SPAN")
+	dateElm.innerText = this.date;
+	this.elm.appendChild(dateElm)
 
 	var nameElm = document.createElement("SPAN")
 	nameElm.innerText = name
@@ -80,8 +86,38 @@ var calc = {
 		})
 		tot.innerText = (Math.round((res + Number.EPSILON) * 100) / 100);
 
+		chart.data.datasets[0].data = this.ents.map(i => {return i.sum})
+		chart.update()
 	},
 	add: function(elm){
 		itemList.appendChild(elm)
 	}
 }
+
+let chart = new Chart(chartElm, {
+	type: 'pie',
+	data: {
+		labels: [],
+		datasets: [{
+			label: 'Votes',
+			data: [],
+			backgroundColor: [
+				'rgba(255, 99, 132, 0.2)',
+				'rgba(54, 162, 235, 0.2)',
+				'rgba(255, 206, 86, 0.2)',
+				'rgba(75, 192, 192, 0.2)',
+				'rgba(153, 102, 255, 0.2)',
+				'rgba(255, 159, 64, 0.2)'
+			],
+			borderColor: [
+				'rgba(255, 99, 132, 1)',
+				'rgba(54, 162, 235, 1)',
+				'rgba(255, 206, 86, 1)',
+				'rgba(75, 192, 192, 1)',
+				'rgba(153, 102, 255, 1)',
+				'rgba(255, 159, 64, 1)'
+			],
+			borderWidth: 1
+		}]
+	},
+})

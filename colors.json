@@ -1,0 +1,18 @@
+{
+	"Nõudepesija": "rgb(0,255,255)",
+	"Koristaja": "rgb(105,105,105)",
+	"Õpetaja": "rgb(255,255,224)",
+	"Autojuht": "rgb(0,0,0)",
+	"Lapsehoidja": "rgb(255,105,180)",
+	"Kokk": "rgb(50,205,50)",
+    "Elektrik": "rgb(0,191,255)",
+    "Tehnik": "rgb(95,158,160)",
+	"Maaler": "rgb(186,85,211)",
+	"Nõustaja": "rgb(255,255,0)",
+	"Arst": "rgb(255,0,0)",
+	"Ehitaja": "rgb(233,150,122)",
+	"Õmbleja": "rgb(139,69,19)",
+	"Raamatupidaja": "rgb(245,245,245)",
+	"Muusik": "rgb(189,183,107)",
+	"Aednik": "rgb(124,252,0)",
+}

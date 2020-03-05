@@ -69,7 +69,7 @@ function Entry(name, hour, date, sum){
 	this.elm.appendChild(sumElm)
 
 	var btnElm = document.createElement("button")
-	btnElm.innerText = "X"
+	btnElm.innerText = "×"
 	this.elm.appendChild(btnElm)
 
 	btnElm.addEventListener("click", e => {

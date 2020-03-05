@@ -6,6 +6,7 @@ const form = document.querySelector("#form")
 const itemList = document.querySelector("#itemList")
 const dateElm = document.querySelector("#date")
 const chartElm = document.querySelector("#chart").getContext("2d")
+const errorlist = document.querySelector("#errorlist")
 
 fetch("./names.json").then(raw => {return raw.json()}).then(data => {
 	for(item in data){
@@ -16,18 +17,23 @@ fetch("./names.json").then(raw => {return raw.json()}).then(data => {
 	}
 
 	form.addEventListener("submit", e => {
+		errorlist.innerText = ""
 		e.preventDefault()
 		let field = select.children[select.selectedIndex]
-		let date = dateElm.value;
-		let hour = parseFloat(num.value)
-		if(hour > 0){
-			let url = "http://andmebaas.stat.ee/sdmx-json/data/PA633/" + field.value + ".3.1/all?startTime=2014&endTime=2014&dimensionAtObservation=allDimensions"
-			fetch(url).then(raw => {return raw.json()}).then(data => {
-				let sum = data.dataSets[0].observations["0:0:0:0"][0] * hour;
-				new Entry(field.innerText, hour, date, sum)
-			})
+		date = moment(dateElm.value, "DD.MM.YYYY");
+		if(date.isValid()){
+			let hour = parseFloat(num.value)
+			if(hour > 0){
+				let url = "http://andmebaas.stat.ee/sdmx-json/data/PA633/" + field.value + ".3.1/all?startTime=2014&endTime=2014&dimensionAtObservation=allDimensions"
+				fetch(url).then(raw => {return raw.json()}).then(data => {
+					let sum = data.dataSets[0].observations["0:0:0:0"][0] * hour;
+					new Entry(field.innerText, hour, date, sum)
+				})
+			}else{
+				errorlist.innerText = "tunde ei saa olla vähem kui null"
+			}
 		}else{
-			console.log("tunde ei saa olla vähem kui null")
+			errorlist.innerText = "Kuupäev on vale"
 		}
 	})
 });
@@ -37,7 +43,6 @@ function Entry(name, hour, date, sum){
 	this.hour = parseInt(hour);
 	this.sum = sum;
 	this.date = date;
-	dt = chart.data.datasets[0].data
 
 	this.rm = function(){
 		calc.ents.splice(calc.ents.indexOf(this), 1)
@@ -48,7 +53,7 @@ function Entry(name, hour, date, sum){
 	this.elm = document.createElement("div")
 
 	var dateElm = document.createElement("SPAN")
-	dateElm.innerText = this.date;
+	dateElm.innerText = this.date.format("DD.MM.YYYY");
 	this.elm.appendChild(dateElm)
 
 	var nameElm = document.createElement("SPAN")

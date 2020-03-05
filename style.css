@@ -1,3 +1,7 @@
+body {
+	font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 #itemList > div{
 	display: grid;
 	grid-template-columns: 20% auto 10% 15% 10%;
@@ -29,7 +33,9 @@
 	margin-top: 50px;
 }
 
-.history {
+#num{
+	width: 15px;
+	-moz-appearance: textfield;
 }
 
 .chart {

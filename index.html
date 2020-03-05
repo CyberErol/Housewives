@@ -10,13 +10,17 @@
 <body>
 	<div class="header">
 	<h1>Töötasu kokku: <span id="tot">0</span>€</h1>
+
 	<form id="form">
 		<select id="select" name=""> </select>
-		<input id="num" type="text" placeholder="tunnid" value="1">
+		<input id="num" type="number" placeholder="tunnid" value="1">
 		<input id="date" type="text" placeholder="kuupäev">
 		<button type="submit" id="btn">+</button>
 	</form>
 	</div>
+
+	<div id="errorlist"></div>
+
 	<div class="container">
 		<div class="history">
 			<div id="itemList"></div>
@@ -28,6 +32,7 @@
 	<div id="itemList"> </div>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
+	<script src="https://momentjs.com/downloads/moment.min.js"></script>
 	<script src="script.js"></script>
 </body>
 </html>

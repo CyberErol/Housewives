@@ -81,6 +81,7 @@ let calc = {
 	ents: [],
 	total: 0,
 	tot: function(){
+		btn.disabled = true;
 		if(this.ents.length == 0){
 			tot.innerText = "0";
 
@@ -88,6 +89,7 @@ let calc = {
 			chart.data.datasets[0].backgroundColor = []
 
 			chart.update()
+			btn.disabled = false;
 		}else{
 			var res = 0;
 			this.ents.forEach((item, i) => {
@@ -104,7 +106,9 @@ let calc = {
 				this.ents.forEach(item => {
 					chart.data.datasets[0].data.push(item.sum)
 					chart.data.datasets[0].backgroundColor.push(data[item.name])
+					chart.data.datasets[0].borderColor.push("#000")
 					chart.update()
+					btn.disabled = false;
 				})
 			})
 		}

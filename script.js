@@ -1,6 +1,7 @@
 const select = document.querySelector("#select")
 const tot = document.querySelector("#tot")
 const num = document.querySelector("#num")
+const btn = document.querySelector("#btn")
 const form = document.querySelector("#form")
 const itemList = document.querySelector("#itemList")
 const dateElm = document.querySelector("#date")
@@ -80,25 +81,33 @@ let calc = {
 	ents: [],
 	total: 0,
 	tot: function(){
-		var res = 0;
-		this.ents.forEach((item, i) => {
-			res += item.sum;
-		})
-		tot.innerText = (Math.round((res + Number.EPSILON) * 100) / 100);
+		if(this.ents.length == 0){
+			tot.innerText = "0";
 
-		chart.data.labels = this.ents.map(i => {return i.name})
+			chart.data.datasets[0].data = []
+			chart.data.datasets[0].backgroundColor = []
 
-		chart.data.datasets[0].data = []
-		chart.data.datasets[0].backgroundColor = []
-
-		this.ents.forEach(item => {
-			chart.data.datasets[0].data.push(item.sum)
-			fetch("./colors.json").then(raw => raw.json()).then(data=>{
-				chart.data.datasets[0].backgroundColor.push(data[item.name])
-				chart.update()
+			chart.update()
+		}else{
+			var res = 0;
+			this.ents.forEach((item, i) => {
+				res += item.sum;
 			})
-		})
-		chart.update()
+			tot.innerText = (Math.round((res + Number.EPSILON) * 100) / 100);
+
+			chart.data.labels = this.ents.map(i => {return i.name})
+
+			chart.data.datasets[0].data = []
+			chart.data.datasets[0].backgroundColor = []
+
+			fetch("./colors.json").then(raw => raw.json()).then(data=>{
+				this.ents.forEach(item => {
+					chart.data.datasets[0].data.push(item.sum)
+					chart.data.datasets[0].backgroundColor.push(data[item.name])
+					chart.update()
+				})
+			})
+		}
 	},
 	add: function(elm){
 		itemList.appendChild(elm)
@@ -117,6 +126,5 @@ let chart = new Chart(chartElm, {
 			borderWidth: 1
 		}]
 	},
-	options: {
-	}
+	options: { }
 })

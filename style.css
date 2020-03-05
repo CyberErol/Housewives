@@ -1,6 +1,7 @@
 #itemList > div{
 	display: grid;
-	grid-template-columns: auto auto auto auto auto;
+	grid-template-columns: 20% auto auto auto 10%;
+	text-align: center;
 }
 
 .header {

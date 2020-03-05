@@ -17,8 +17,8 @@
 	margin: auto;
 	width: 100%;
 	display: grid;
-	grid-template-columns: auto auto;
-	grid-gap: 100px;
+	grid-template-columns: 47% 47%;
+	grid-gap: 6%;
 	margin-top: 50px;
 }
 
@@ -28,6 +28,14 @@
 }
 
 .chart {
+	position: relative;
 	background-color: #ffb3a7;
 	border: 2px solid black;
+}
+
+@media only screen and (max-width: 800px) {
+	.container {
+		display: flex;
+		flex-direction: column;
+	}
 }

@@ -18,7 +18,7 @@ fetch("./names.json").then(raw => {return raw.json()}).then(data => {
 		e.preventDefault()
 		let field = select.children[select.selectedIndex]
 		let date = dateElm.value;
-		let hour = num.value
+		let hour = parseFloat(num.value)
 		if(hour > 0){
 			let url = "http://andmebaas.stat.ee/sdmx-json/data/PA633/" + field.value + ".3.1/all?startTime=2014&endTime=2014&dimensionAtObservation=allDimensions"
 			fetch(url).then(raw => {return raw.json()}).then(data => {
@@ -76,7 +76,7 @@ function Entry(name, hour, date, sum){
 	calc.tot();
 }
 
-var calc = {
+let calc = {
 	ents: [],
 	total: 0,
 	tot: function(){
@@ -86,7 +86,18 @@ var calc = {
 		})
 		tot.innerText = (Math.round((res + Number.EPSILON) * 100) / 100);
 
-		chart.data.datasets[0].data = this.ents.map(i => {return i.sum})
+		chart.data.labels = this.ents.map(i => {return i.name})
+
+		chart.data.datasets[0].data = []
+		chart.data.datasets[0].backgroundColor = []
+
+		this.ents.forEach(item => {
+			chart.data.datasets[0].data.push(item.sum)
+			fetch("./colors.json").then(raw => raw.json()).then(data=>{
+				chart.data.datasets[0].backgroundColor.push(data[item.name])
+				chart.update()
+			})
+		})
 		chart.update()
 	},
 	add: function(elm){
@@ -99,25 +110,13 @@ let chart = new Chart(chartElm, {
 	data: {
 		labels: [],
 		datasets: [{
-			label: 'Votes',
+			label: '# of hours',
 			data: [],
-			backgroundColor: [
-				'rgba(255, 99, 132, 0.2)',
-				'rgba(54, 162, 235, 0.2)',
-				'rgba(255, 206, 86, 0.2)',
-				'rgba(75, 192, 192, 0.2)',
-				'rgba(153, 102, 255, 0.2)',
-				'rgba(255, 159, 64, 0.2)'
-			],
-			borderColor: [
-				'rgba(255, 99, 132, 1)',
-				'rgba(54, 162, 235, 1)',
-				'rgba(255, 206, 86, 1)',
-				'rgba(75, 192, 192, 1)',
-				'rgba(153, 102, 255, 1)',
-				'rgba(255, 159, 64, 1)'
-			],
+			backgroundColor: [],
+			borderColor: [],
 			borderWidth: 1
 		}]
 	},
+	options: {
+	}
 })

@@ -48,3 +48,34 @@ body {
 		flex-direction: column;
 	}
 }
+
+.selection{
+	font-size: 20px;
+	min-width: 300px;
+}
+
+.hours{
+	font-size: 20px;
+	max-width: 60px;
+	min-width: 60px;
+}
+
+.date{
+	font-size: 20px;
+	max-width: 200px;
+}
+
+.add{
+	font-size: 20px;
+	background-color: rgb(255,105,180);
+	border-color: violet;
+	box-shadow: black;
+}
+
+.error {
+	font-size: 20px;
+}
+
+.history {
+	font-size: 20px;
+}

@@ -1,7 +1,13 @@
 #itemList > div{
 	display: grid;
-	grid-template-columns: 20% auto auto auto 10%;
+	grid-template-columns: 20% auto 10% 15% 10%;
 	text-align: center;
+	align-items: center;
+	margin-top: 5px;
+}
+
+#itemList button{
+	padding: 0;
 }
 
 .header {

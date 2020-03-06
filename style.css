@@ -1,10 +1,11 @@
 body {
 	font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	background-color: #ffe0db;
 }
 
 #itemList > div{
 	display: grid;
-	grid-template-columns: 30% auto 10% 15% 15%;
+	grid-template-columns: 30% auto 10% 18% 7%;
 	align-items: center;
 	margin-top: 5px;
 }
@@ -13,9 +14,22 @@ body {
 	padding: 1rem;
 }
 
-#itemList button{
-	padding: 0;
-	font-size: 2rem;
+#itemList button {
+	margin-top: 5px;
+	box-shadow:inset 0px 1px 0px 0px #cf866c;
+	background:linear-gradient(to bottom, #d0451b 5%, #bc3315 100%);
+	background-color:#d0451b;
+	height: 30px;
+	width: 30px;
+	border-radius:3px;
+	border:1px solid #942911;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size: 1.5rem;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #854629;
 }
 
 .header {
@@ -27,7 +41,6 @@ body {
 	background: #ffb3a7;
 	color: white;
 	font-size: 30px;
-	border: 1px solid black;
 }
 
 .container {
@@ -55,25 +68,52 @@ body {
 	height: 2rem;
 }
 
-.selection{
+.selection {
 	min-width: 300px;
+	cursor: pointer;
+	font-size: 18px;
 }
 
-.hours{
+.hours {
 	-moz-appearance: textfield;
-	width: 60px;
+	width: 70px;
+	font-size: 18px;
 }
 
-.date{
-	max-width: 200px;
+.date {
+	max-width: 100px;
+	font-size: 18px;
 }
 
-.add{
+.add {
 	font-size: 1.5rem;
+	width: 40px;
+	background:linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
+	background-color:#2dabf9;
+	border-radius:3px;
+	border:1px solid #0b0e07;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	text-decoration:none;
+}
+.add:hover {
+	background:linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
+	background-color:#0688fa;
+}
+.add:active {
+	position:relative;
+	top:1px;
 }
 
-.input{
+.input {
 	margin: 5px;
+	height: 40px;
+	padding-left: 5px;
+}
+
+.itemslist {
+	font-size: 18px;
 }
 
 @media only screen and (max-width: 800px) {

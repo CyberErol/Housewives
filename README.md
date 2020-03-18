@@ -2,7 +2,7 @@ Koduinimese kalkulaator
 
 Ülesanded:
 
-Live:
+Live:https://tak18trumann.itmajakas.ee/h-calc/
 
 Rühma Juht: 
 Joonas Püüding

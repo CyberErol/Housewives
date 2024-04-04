@@ -11,7 +11,6 @@ Arendajad:
 Martin Trumann
 
 Abistajad:
-Erol Trumm
 Kadri Maripuu
 Kenneth Lember
 Risto Vill
